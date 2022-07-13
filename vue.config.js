@@ -2,7 +2,7 @@
 const path = require('path')
 const defaultSettings = require('./src/settings.js')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
@@ -35,6 +35,15 @@ module.exports = {
     overlay: {
       warnings: false,
       errors: true
+    },
+    proxy: {
+      // 当我们的
+      // 跨域的本质 浏览器的同源策略，这个ajax不由浏览器发，脚手架发
+      '/abc': {
+        target: 'http://ihrm.itheima.net/', // 跨域请求地址
+        changeOrigin: true, // 只有这个值为true时，才表示展开跨域
+        pathRewrite: { '^/abc': '' } // pathRewrite 路径重写
+      }
     }
     // 真正的项目是有自己的接口文件的，不用去模拟数据
     // before: require('./mock/mock-server.js')
@@ -49,7 +58,7 @@ module.exports = {
       }
     }
   },
-  chainWebpack(config) {
+  chainWebpack (config) {
     // 可以提高首屏速度，建议开启预加载
     config.plugin('preload').tap(() => [
       {
@@ -88,7 +97,7 @@ module.exports = {
             .plugin('ScriptExtHtmlWebpackPlugin')
             .after('html')
             .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
+              // `runtime` must same as runtimeChunk name. default is `runtime`
               inline: /runtime\..*\.js$/
             }])
             .end()
