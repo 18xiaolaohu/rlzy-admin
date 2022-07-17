@@ -36,6 +36,12 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
+// 批量导入自定义指令，作用可以简化指令的写法
+import * as obj from '@/directives' // 得到有一个对象
+Object.keys(obj).forEach(item => {
+  Vue.directive(item, obj[item])
+})
+
 new Vue({
   el: '#app',
   router,

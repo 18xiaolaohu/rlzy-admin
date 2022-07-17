@@ -57,7 +57,7 @@
         type="primary"
         style="width: 100%; margin-bottom: 30px"
         @click.native.prevent="handleLogin"
-        >Login</el-button
+        >登录</el-button
       >
 
       <div class="tips">
@@ -128,7 +128,6 @@ export default {
           })
         } else {
           this.$message.error('表单数据填写错误')
-          return false
         }
       })
     }
