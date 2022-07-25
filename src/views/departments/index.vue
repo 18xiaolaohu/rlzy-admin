@@ -21,6 +21,7 @@
         </el-tabs>
       </el-card>
     </div>
+    <el-backtop></el-backtop>
   </div>
 </template>
 

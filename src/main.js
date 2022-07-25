@@ -42,6 +42,17 @@ Object.keys(obj).forEach(item => {
   Vue.directive(item, obj[item])
 })
 
+// 封装组件，让同事们用起来更方便
+import components from '@/components'
+// 会自动执行install方法
+Vue.use(components)
+
+// 封装的批量过滤器
+import * as filters from '@/filters/index'
+Object.keys(filters).forEach(item => {
+  Vue.filter(item, filters[item])
+})
+
 new Vue({
   el: '#app',
   router,

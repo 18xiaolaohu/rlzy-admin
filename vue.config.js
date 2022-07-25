@@ -40,7 +40,8 @@ module.exports = {
       // 当我们的
       // 跨域的本质 浏览器的同源策略，这个ajax不由浏览器发，脚手架发
       '/abc': {
-        target: 'http://ihrm.itheima.net/', // 跨域请求地址
+        target: 'http://ihrm.itheima.net/',
+        // target: 'http://ihrm-java.itheima.net/', // 跨域请求地址
         changeOrigin: true, // 只有这个值为true时，才表示展开跨域
         pathRewrite: { '^/abc': '' } // pathRewrite 路径重写
       }
